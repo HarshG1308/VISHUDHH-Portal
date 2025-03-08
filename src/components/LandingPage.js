@@ -495,7 +495,7 @@ const ModernLandingPage = () => {
             { name: 'Awards', link: '#awards' },
             { name: 'Gallery', link: 'https://www.indiatoday.in/swachh-bharat-abhiyan/photos' },
             { name: 'SAP2024', link: 'https://swachhataactionplan.gov.in/swachta/' },
-            { name: 'Progress', link: '#progress' }
+            { name: 'TeamIF', link: '#progress' }
           ].map((item) => (
             <a 
               key={item.name} 
@@ -1145,6 +1145,277 @@ const ModernLandingPage = () => {
     </div>
   </div>
 </div>
+
+{/* Footer Section */}
+<footer className="bg-gradient-to-r from-green-900 to-blue-900 text-white pt-16 pb-8">
+  <div className="max-w-7xl mx-auto px-6">
+    {/* Main Footer Content */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+      {/* Column 1: About & Mission */}
+      <div>
+        <div className="mb-6 flex items-center">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6.75L9 17.25" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M12 12L12 17.25" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M15 7.5L15 17.25" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M7.8 20.25H16.2C17.8802 20.25 18.7202 20.25 19.362 19.891C19.9265 19.5798 20.3798 19.1265 20.691 18.562C21.05 17.9202 21.05 17.0802 21.05 15.4V8.6C21.05 6.91984 21.05 6.07976 20.691 5.43803C20.3798 4.87354 19.9265 4.42019 19.362 4.10896C18.7202 3.75 17.8802 3.75 16.2 3.75H7.8C6.11984 3.75 5.27976 3.75 4.63803 4.10896C4.07354 4.42019 3.62019 4.87354 3.30896 5.43803C2.95 6.07976 2.95 6.91984 2.95 8.6V15.4C2.95 17.0802 2.95 17.9202 3.30896 18.562C3.62019 19.1265 4.07354 19.5798 4.63803 19.891C5.27976 20.25 6.11984 20.25 7.8 20.25Z" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
+          <h2 className="text-xl font-bold ml-3">Vishuddh AI Portal</h2>
+        </div>
+        <p className="text-gray-300 mb-6">
+          Working together to create a cleaner, healthier, and more sustainable future for India through collective action and innovative solutions.
+        </p>
+        <div>
+          <a 
+            href="/about-us" 
+            className="text-green-300 hover:text-white transition-colors duration-300 inline-flex items-center group"
+          >
+            Learn more about our mission
+            <svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300"
+            >
+              <path d="M9 5L16 12L9 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      {/* Column 2: Quick Links */}
+      <div>
+        <h3 className="text-lg font-bold mb-6 border-b border-green-700 pb-2">Quick Links</h3>
+        <ul className="space-y-3">
+          {[
+            { title: "Home", href: "/" },
+            { title: "About Us", href: "/about" },
+            { title: "Impact Stories", href: "/impact" },
+            { title: "Events Calendar", href: "/events" },
+            { title: "Resources", href: "/resources" },
+            { title: "Government Programs", href: "/government-programs" },
+            { title: "FAQ", href: "/faq" },
+            { title: "Contact Us", href: "/contact" }
+          ].map((link, index) => (
+            <li key={index}>
+              <a 
+                href={link.href} 
+                className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center"
+              >
+                <svg 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-2 text-green-400"
+                >
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {link.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Column 3: Team & Support */}
+      <div>
+        <h3 className="text-lg font-bold mb-6 border-b border-green-700 pb-2">Team & Support</h3>
+        <ul className="space-y-3">
+          {[
+            { title: "Our Team", href: "/team" },
+            { title: "Executive Committee", href: "/committee" },
+            { title: "Advisory Board", href: "/advisors" },
+            { title: "Volunteer Opportunities", href: "/volunteer" },
+            { title: "Partner With Us", href: "/partnerships" },
+            { title: "Support Center", href: "/support" },
+            { title: "Report Issues", href: "/report" }
+          ].map((link, index) => (
+            <li key={index}>
+              <a 
+                href={link.href} 
+                className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center"
+              >
+                <svg 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mr-2 text-green-400"
+                >
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                {link.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Column 4: Contact & Newsletter */}
+      <div>
+        <h3 className="text-lg font-bold mb-6 border-b border-green-700 pb-2">Stay Connected</h3>
+        <div className="mb-6">
+          <p className="text-gray-300 mb-4">Subscribe to our newsletter for updates, events, and success stories</p>
+          <div className="flex">
+            <input 
+              type="email" 
+              placeholder="Your email address" 
+              className="px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800 w-full"
+            />
+            <button className="bg-green-600 hover:bg-green-700 text-white rounded-r-lg px-4 transition-colors duration-300">
+              Subscribe
+            </button>
+          </div>
+        </div>
+        <div>
+          <p className="text-gray-300 mb-3">Contact Us:</p>
+          <address className="not-italic text-gray-300 mb-4">
+            <div className="flex items-start mb-2">
+              <svg className="mr-2 mt-1 text-green-400 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12.75C13.6569 12.75 15 11.4069 15 9.75C15 8.09315 13.6569 6.75 12 6.75C10.3431 6.75 9 8.09315 9 9.75C9 11.4069 10.3431 12.75 12 12.75Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 22C16 18 20 14.4183 20 9.75C20 5.33172 16.4183 2 12 2C7.58172 2 4 5.33172 4 9.75C4 14.4183 8 18 12 22Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <div>
+                Vishuddh AI Portal HQ<br />
+                123 Green Avenue, New Delhi<br />
+                India - 110001
+              </div>
+            </div>
+            <div className="flex items-center mb-2">
+              <svg className="mr-2 text-green-400 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M17 2V5M7 2V5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 9H22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <a href="mailto:contact@cleanindia.org" className="hover:text-white transition-colors duration-300">
+                contact@vishuddhai.org
+              </a>
+            </div>
+            <div className="flex items-center">
+              <svg className="mr-2 text-green-400 flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 5.5C21 14.0604 14.0604 21 5.5 21C5.11378 21 4.73086 20.9859 4.35172 20.9581C3.91662 20.9262 3.69906 20.9103 3.50103 20.7963C3.33701 20.7019 3.19371 20.573 3.07822 20.4184C2.9413 20.2372 2.88591 20.0251 2.77513 19.6009L2.08053 17.5567C1.89573 16.9967 1.80334 16.7167 1.95795 16.4185C2.0858 16.1703 2.30802 15.9893 2.56988 15.9108C2.87334 15.8194 3.23599 15.9168 3.96129 16.1117L6.45733 16.9421C7.16041 17.1288 7.51195 17.2222 7.83826 17.1344C8.12154 17.0576 8.37519 16.9058 8.56988 16.6968C8.7951 16.4562 8.91014 16.1153 9.14021 15.4335L9.36438 14.7652C9.6074 14.0303 9.72892 13.6629 9.6046 13.3224C9.6046 13.3224 9.6046 13.3224 9.6046 13.3224C9.51921 13.0723 9.33129 12.8692 9.09586 12.7669C8.76594 12.6276 8.32756 12.7033 7.45081 12.8547C5.24993 13.2401 3.14587 11.931 2.35154 9.66025C1.65479 7.63137 2.33553 5.34867 4.05463 4.05463C5.34867 2.33553 7.63137 1.65479 9.66025 2.35154C11.931 3.14587 13.2401 5.24993 12.8547 7.45081C12.7033 8.32756 12.6276 8.76594 12.7669 9.09586C12.8692 9.33129 13.0723 9.51921 13.3224 9.6046C13.3224 9.6046 13.3224 9.6046 13.3224 9.6046C13.6629 9.72892 14.0303 9.6074 14.7652 9.36438L15.4335 9.14021C16.1153 8.91014 16.4562 8.7951 16.6968 8.56988C16.9058 8.37519 17.0576 8.12154 17.1344 7.83826C17.2222 7.51195 17.1288 7.16041 16.9421 6.45733L16.1117 3.96129C15.9168 3.23599 15.8194 2.87334 15.9108 2.56988C15.9893 2.30802 16.1703 2.0858 16.4185 1.95795C16.7167 1.80334 16.9967 1.89573 17.5567 2.08053L19.6009 2.77513C20.0251 2.88591 20.2372 2.9413 20.4184 3.07822C20.573 3.19371 20.7019 3.33701 20.7963 3.50103C20.9103 3.69906 20.9262 3.91662 20.9581 4.35172C20.9859 4.73086 21 5.11378 21 5.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <a href="tel:+911234567890" className="hover:text-white transition-colors duration-300">
+                +91 123 456 7890
+              </a>
+            </div>
+          </address>
+        </div>
+      </div>
+    </div>
+
+    {/* Social Media Links */}
+    <div className="border-t border-green-800 pt-8 pb-8">
+      <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="mb-6 md:mb-0">
+          <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
+          <div className="flex space-x-4">
+            {/* Facebook */}
+            <a 
+              href="https://facebook.com/cleanindia" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-blue-800 p-3 rounded-full hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center"
+              aria-label="Visit our Facebook page"
+            >
+              <svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path>
+              </svg>
+            </a>
+            
+            {/* Twitter */}
+            <a 
+              href="https://twitter.com/cleanindia" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-blue-400 p-3 rounded-full hover:bg-blue-500 transition-colors duration-300 flex items-center justify-center"
+              aria-label="Follow us on Twitter"
+            >
+              <svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+              </svg>
+            </a>
+            
+            {/* Instagram */}
+            <a 
+              href="https://instagram.com/cleanindia" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 p-3 rounded-full hover:opacity-90 transition-opacity duration-300 flex items-center justify-center"
+              aria-label="Follow us on Instagram"
+            >
+              <svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+              </svg>
+            </a>
+            
+            {/* YouTube */}
+            <a 
+              href="https://youtube.com/cleanindia" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-red-600 p-3 rounded-full hover:bg-red-700 transition-colors duration-300 flex items-center justify-center"
+              aria-label="Subscribe to our YouTube channel"
+            >
+              <svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path>
+              </svg>
+            </a>
+            
+            {/* LinkedIn */}
+            <a 
+              href="https://linkedin.com/company/cleanindia" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center"
+              aria-label="Connect with us on LinkedIn"
+            >
+              <svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div className="mb-6 md:mb-0 text-center md:text-right">
+          <Star className="text-white" size={32} />
+          <h1 className={`text-3xl font-bold tracking-wider text-white"}`}>
+              VISHUDDH AI
+            </h1>
+          <div className="text-sm text-gray-400 mt-2">
+            Government of India Endorsed Initiative
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Bottom Copyright and Legal */}
+    <div className="border-t border-green-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <div className="text-sm text-gray-400 mb-4 md:mb-0">
+        © 2025 Vishuddh AI. All rights reserved.
+      </div>
+      <div className="flex flex-wrap justify-center space-x-4 text-sm text-gray-400">
+        <a href="/privacy-policy" className="hover:text-white transition-colors duration-300 mb-2 md:mb-0">
+          Privacy Policy
+        </a>
+        <a href="/terms-of-service" className="hover:text-white transition-colors duration-300 mb-2 md:mb-0">
+          Terms of Service
+        </a>
+        <a href="/accessibility" className="hover:text-white transition-colors duration-300 mb-2 md:mb-0">
+          Accessibility
+        </a>
+        <a href="/sitemap" className="hover:text-white transition-colors duration-300 mb-2 md:mb-0">
+          Sitemap
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
     </div>
   );
 };
