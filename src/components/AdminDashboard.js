@@ -1,10 +1,10 @@
 import React ,{ useState} from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import StateDashboard from "./StateDashboard";
 import DistrictDashboard from "./DistrictDashboard";
 
 const AdminDashboard = () => {
-
+  const navigate = useNavigate();
   const [states, setStates] = useState([
     { name: "Maharashtra", districts: [{ name: "Mumbai", cameraIP: "192.168.1.1" }] },
     { name: "Bihar", districts: [{ name: "Patna", cameraIP: "192.168.1.2" }] },
@@ -18,6 +18,19 @@ const AdminDashboard = () => {
   const toggleExpandedState = (stateIndex) => {
     setExpandedState(expandedState === stateIndex ? null : stateIndex);
   };
+
+  const [expandedCard, setExpandedCard] = useState(null);
+  const toggleExpandedCard = (cardIndex) => {
+    setExpandedCard(expandedCard === cardIndex ? null : cardIndex);
+  };
+
+  const icons = [
+    "📊", // Total Reports Submitted
+    "🏤", // Total Post Offices Monitored
+    "🏆", // Best Performing State
+    "⚠️" // Worst Performing State
+  ];
+
 
   const handleAddDistrict = (stateIndex) => {
     if (newDistrictName && newCameraIP) {
@@ -51,6 +64,12 @@ const AdminDashboard = () => {
       setNewStateDistrictCount("");
     }
   };
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    localStorage.removeItem("userRole");
+    navigate("/signup");
+  };
+
 
 
   return (
@@ -71,6 +90,9 @@ const AdminDashboard = () => {
           >
             District Dashboard
           </Link>
+          <button onClick={handleLogout} className="bg-red-500 hover:bg-red-600 px-6 py-2 text-white font-semibold rounded">
+            Logout
+          </button>
         </div>
       </nav>
 
@@ -80,82 +102,20 @@ const AdminDashboard = () => {
         <Route
           path="/"
           element={
-            <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Total Reports */}
-                <div className="bg-white shadow-md p-6 rounded-lg flex items-center">
-                  <div className="text-blue-600 text-4xl mr-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-12 w-12"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8c.638-2.024 1.278-4.03 2.56-5.93 1.099-1.636 3.205-2.045 4.905-1.314M16.88 3.12l3.5 2.28-2.28 3.5M6 12h.01M3.12 7.12l3.5 2.28-2.28 3.5M12 16c.638-2.024 1.278-4.03 2.56-5.93 1.099-1.636 3.205-2.045 4.905-1.314M16.88 11.12l3.5 2.28-2.28 3.5M12 16c-.638 2.024-1.278-4.03-2.56-5.93-1.099-1.636-3.205-2.045-4.905-1.314M7.12 20.88l3.5-2.28-2.28-3.5"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 className="text-gray-600 text-lg font-semibold">
-                      Total Reports Submitted
-                    </h2>
-                    <p className="text-3xl font-bold">1200</p>
-                  </div>
-                </div>
-
-                {/* Total Post Offices */}
-                <div className="bg-white shadow-md p-6 rounded-lg flex items-center">
-                  <div className="text-green-600 text-4xl mr-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-12 w-12"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 10l1.79 5.37c.15.44.54.75 1 .75h8.42a1.75 1.75 0 001.74-1.54L17.4 10M10 2l-2 4m6-4l2 4m-8 8h8m-8 0c.3.91 1.16 2 3 2s2.7-1.09 3-2M12 18v4"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 className="text-gray-600 text-lg font-semibold">
-                      Total Post Offices Monitored
-                    </h2>
-                    <p className="text-3xl font-bold">850</p>
-                  </div>
-                </div>
+            <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+            {["Total Reports Submitted", "Total Post Offices Monitored", "Best Performing State", "Worst Performing State"].map((title, index) => (
+              <div
+                key={index}
+                className={`bg-white p-8 rounded-lg shadow-md cursor-pointer transition-all duration-300 hover:shadow-2xl ${expandedCard === index ? "shadow-lg scale-105" : "shadow-green-200"}`}
+                onMouseEnter={() => toggleExpandedCard(index)}
+                onMouseLeave={() => toggleExpandedCard(null)}
+              >
+                <div className="text-6xl mb-4">{icons[index]}</div>
+                <h2 className="text-gray-600 text-lg font-semibold">{title}</h2>
+                <p className="text-3xl font-bold text-gray-800">{index === 0 ? "1200" : index === 1 ? "850" : index === 2 ? "Maharashtra" : "Bihar"}</p>
               </div>
-
-              {/* Performance Section */}
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Best Performing State */}
-                <div className="bg-white shadow-md p-6 rounded-lg">
-                  <h2 className="text-gray-600 text-lg font-semibold">
-                    Best Performing State
-                  </h2>
-                  <p className="text-2xl font-bold text-green-600">
-                    Maharashtra
-                  </p>
-                </div>
-
-                {/* Worst Performing State */}
-                <div className="bg-white shadow-md p-6 rounded-lg">
-                  <h2 className="text-gray-600 text-lg font-semibold">
-                    Worst Performing State
-                  </h2>
-                  <p className="text-2xl font-bold text-red-600">Bihar</p>
-                </div>
-              </div>
-            </div>
+            ))}
+          </div>
           }
         />
 
