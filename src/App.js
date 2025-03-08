@@ -8,6 +8,7 @@ import CameraDetail from './components/CameraDetail';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 import Signup from './components/Signup';
+import TeamPage from './components/TeamPage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/district-dashboard" element={<DistrictDashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/camera/:id" element={<CameraDetail />} />
+        <Route path="/team" element={<TeamPage />} />
       </Routes>
     </Router>
   );

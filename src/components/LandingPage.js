@@ -495,7 +495,7 @@ const ModernLandingPage = () => {
             { name: 'Awards', link: '#awards' },
             { name: 'Gallery', link: 'https://www.indiatoday.in/swachh-bharat-abhiyan/photos' },
             { name: 'SAP2024', link: 'https://swachhataactionplan.gov.in/swachta/' },
-            { name: 'TeamIF', link: '#progress' }
+            { name: 'TeamIF', link: '/team' }
           ].map((item) => (
             <a 
               key={item.name} 

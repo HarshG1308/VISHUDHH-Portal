@@ -2,7 +2,7 @@ import { Menu, X } from 'lucide-react';
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import Signup from './Signup';
-
+import TeamPage from './TeamPage';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -77,7 +77,7 @@ const MainPage = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <Routes>
-        <Route path="/signup" element={<Signup />} />
+      <Route path="/signup" element={<Signup />} />
         <Route path="/" element={
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div className="text-center">
