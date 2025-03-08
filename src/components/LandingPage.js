@@ -400,7 +400,7 @@ const DashboardCard = ({ title, icon, color, features, image, delay }) => (
           alt={`${title} Dashboard`} 
           className="w-full h-40 object-cover object-top"
         />
-      </div>
+      </div>  
       
       <div className="space-y-3">
         <h4 className="font-medium text-gray-700 mb-2">Key Features:</h4>
@@ -490,16 +490,24 @@ const ModernLandingPage = () => {
             </h1>
           </div>
           <div className="flex items-center space-x-8">
-            {['Schemes', 'Awards', 'Gallery', 'SAP2024', 'Progress'].map((item) => (
-              <a 
-                key={item} 
-                href={`#${item.toLowerCase()}`} 
-                className={`font-medium transition-colors ${
-                  isScrolled ? "text-gray-700 hover:text-blue-600" : "text-white hover:text-blue-200"
-                }`}
-              >
-                {item}
-              </a>
+                  {[
+            { name: 'Schemes', link: 'https://swachhbharatmission.ddws.gov.in/#:~:text=Swachh%20Bharat%20Mission:%20Driving%20India\'s,aligning%20with%20SDG%20Target%206.2.' },
+            { name: 'Awards', link: '#awards' },
+            { name: 'Gallery', link: 'https://www.indiatoday.in/swachh-bharat-abhiyan/photos' },
+            { name: 'SAP2024', link: 'https://swachhataactionplan.gov.in/swachta/' },
+            { name: 'Progress', link: '#progress' }
+          ].map((item) => (
+            <a 
+              key={item.name} 
+              href={item.link} 
+              target={item.link.startsWith('http') ? '_blank' : '_self'} 
+              rel={item.link.startsWith('http') ? 'noopener noreferrer' : ''}
+              className={`font-medium transition-colors ${
+                isScrolled ? "text-gray-700 hover:text-blue-600" : "text-white hover:text-blue-200"
+              }`}
+            >
+              {item.name}
+            </a>
             ))}
             <div className="flex space-x-4">
               <motion.button
@@ -936,8 +944,211 @@ const ModernLandingPage = () => {
           </div>
         </div>
       </div>
+
+
+      {/* Impact Together Section */}
+<div id="impact-together" className="py-24 bg-gradient-to-br from-green-50 to-blue-50">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <h2 className="text-5xl font-bold text-gray-800 mb-4">Let's Create an Impact Together</h2>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Join thousands of citizens committed to transforming India into a cleaner, greener nation through collective action
+        </p>
+      </motion.div>
+    </div>
+    
+    {/* Pledge Card */}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true, margin: "-100px" }}
+      className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto mb-16 border border-green-100"
+    >
+      <div className="bg-gradient-to-r from-green-600 to-blue-600 p-6 text-white">
+        <h3 className="text-3xl font-bold text-center">The Clean India Pledge</h3>
+      </div>
+      
+      <div className="p-8">
+        <div className="prose prose-lg max-w-none text-gray-700">
+          <p className="italic text-center font-medium">
+            "I pledge to actively contribute to making India clean and green. I will:
+          </p>
+          
+          <ul className="space-y-4 mt-6">
+            <li className="flex items-start">
+              <CheckCircle className="text-green-500 mr-3 mt-1 flex-shrink-0" size={20} />
+              <span>Keep my surroundings clean and encourage others to do the same</span>
+            </li>
+            <li className="flex items-start">
+              <CheckCircle className="text-green-500 mr-3 mt-1 flex-shrink-0" size={20} />
+              <span>Reduce, reuse, and recycle waste to minimize environmental impact</span>
+            </li>
+            <li className="flex items-start">
+              <CheckCircle className="text-green-500 mr-3 mt-1 flex-shrink-0" size={20} />
+              <span>Participate in community cleanliness drives and awareness campaigns</span>
+            </li>
+            <li className="flex items-start">
+              <CheckCircle className="text-green-500 mr-3 mt-1 flex-shrink-0" size={20} />
+              <span>Support sustainable practices and eco-friendly technologies</span>
+            </li>
+            <li className="flex items-start">
+              <CheckCircle className="text-green-500 mr-3 mt-1 flex-shrink-0" size={20} />
+              <span>Spread awareness about the importance of cleanliness and environmental protection</span>
+            </li>
+          </ul>
+          
+          <p className="italic text-center font-medium mt-6">
+            Together, we will build a cleaner, healthier, and more sustainable India for generations to come."
+          </p>
+        </div>
+        
+        {/* Pledge Counter */}
+        <div className="mt-8 flex justify-center">
+          <div className="bg-blue-50 px-8 py-4 rounded-lg text-center">
+            <p className="text-gray-600 mb-2">Citizens who have taken the pledge</p>
+            <div className="text-5xl font-bold text-blue-700">247,852</div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+    
+    {/* Action Tiles */}
+    <div className="grid md:grid-cols-3 gap-8">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="bg-white rounded-xl shadow-lg overflow-hidden"
+      >
+        <div className="h-48 bg-green-600 flex items-center justify-center">
+          <UserPlus size={64} className="text-white" />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-gray-800 mb-3">Take the Pledge</h3>
+          <p className="text-gray-600 mb-6">Join thousands of citizens committed to creating a cleaner India. Your pledge makes a difference.</p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full bg-green-600 text-white py-3 rounded-lg font-medium flex items-center justify-center space-x-2"
+          >
+            <UserPlus size={18} />
+            <span>Sign the Pledge</span>
+          </motion.button>
+        </div>
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="bg-white rounded-xl shadow-lg overflow-hidden"
+      >
+        <div className="h-48 bg-blue-600 flex items-center justify-center">
+          <Map size={64} className="text-white" />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-gray-800 mb-3">Find Local Events</h3>
+          <p className="text-gray-600 mb-6">Discover cleanliness drives and environmental initiatives happening in your community. Support local initiatives and make a difference.</p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium flex items-center justify-center space-x-2"
+          >
+            <Map size={18} />
+            <span>View Events Map</span>
+          </motion.button>
+        </div>
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="bg-white rounded-xl shadow-lg overflow-hidden"
+      >
+        <div className="h-48 bg-purple-600 flex items-center justify-center">
+          <Monitor size={64} className="text-white" />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-gray-800 mb-3">Track Your Impact</h3>
+          <p className="text-gray-600 mb-6">Monitor your contribution to the Clean India mission and see the collective difference we're making.</p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-full bg-purple-600 text-white py-3 rounded-lg font-medium flex items-center justify-center space-x-2"
+          >
+            <Activity size={18} />
+            <span>View Impact Dashboard</span>
+          </motion.button>
+        </div>
+      </motion.div>
+    </div>
+    
+    {/* Success Stories Carousel */}
+    <div className="mt-24">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="text-center mb-12"
+      >
+        <h3 className="text-3xl font-bold text-gray-800 mb-4">Success Stories</h3>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          Real impact from communities across India
+        </p>
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="p-4 bg-white rounded-xl shadow-lg"
+      >
+        {/* Here you would implement a carousel component with success stories */}
+        <div className="bg-green-50 p-6 rounded-lg border border-green-100">
+          <div className="flex items-center space-x-4 mb-4">
+            <div className="bg-green-600 text-white p-3 rounded-full">
+              <Award size={24} />
+            </div>
+            <h4 className="text-xl font-bold text-gray-800">Featured Success: Pune River Restoration</h4>
+          </div>
+          <p className="text-gray-700 mb-4">
+            Over 5,000 volunteers came together to transform the polluted Mula-Mutha river in Pune. Through a combination
+            of community action and AI-powered waste tracking, they removed 200 tons of waste and implemented sustainable
+            monitoring systems that have maintained water quality for over a year.
+          </p>
+          <div className="flex justify-between items-center">
+            <div className="text-sm text-gray-500">June 2024 - Ongoing</div>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-green-600 font-medium flex items-center space-x-2"
+            >
+              <span>Read full story</span>
+              <ChevronRight size={18} />
+            </motion.button>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</div>
     </div>
   );
 };
+
+
 
 export default ModernLandingPage;
