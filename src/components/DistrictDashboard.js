@@ -9,12 +9,14 @@ import {
   Tooltip,
 } from 'chart.js';
 import { AlertTriangle, Camera, Moon, Sun } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import "chart.js/auto";
+
 
 ChartJS.register(
   CategoryScale,
