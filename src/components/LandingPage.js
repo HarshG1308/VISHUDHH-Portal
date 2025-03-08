@@ -295,7 +295,12 @@ import {
   UserPlus,
   Award,
   BarChart2,
-  Zap
+  Zap,
+  Monitor,
+  Layers,
+  Map,
+  ChevronRight,
+  Activity
 } from 'lucide-react';
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -367,13 +372,56 @@ const FeatureCard = ({ icon, title, description, benefits, stats }) => (
   </motion.div>
 );
 
+// Dashboard Card Component
+const DashboardCard = ({ title, icon, color, features, image, delay }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay }}
+    viewport={{ once: true, margin: "-100px" }}
+    className={`bg-white rounded-xl overflow-hidden shadow-xl border border-${color}-100 flex flex-col h-full`}
+  >
+    <div className={`bg-${color}-600 text-white p-6 flex items-center justify-between`}>
+      <div className="flex items-center space-x-3">
+        <div className={`p-3 rounded-full bg-white/20`}>
+          {icon}
+        </div>
+        <h3 className="text-2xl font-bold">{title}</h3>
+      </div>
+      <Activity size={24} />
+    </div>
+    
+    <div className="p-6 flex-grow">
+      <div className="mb-6 rounded-lg overflow-hidden border border-gray-200 shadow-md">
+        <img 
+          src={image} 
+          alt={`${title} Dashboard`} 
+          className="w-full h-40 object-cover object-top"
+        />
+      </div>
+      
+      <div className="space-y-3">
+        <h4 className="font-medium text-gray-700 mb-2">Key Features:</h4>
+        {features.map((feature, index) => (
+          <div key={index} className="flex items-start">
+            <CheckCircle className={`text-${color}-500 mr-2 mt-1 flex-shrink-0`} size={16} />
+            <span className="text-gray-600">{feature}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </motion.div>
+);
+
 const ModernLandingPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
-  const [scrollProgress, setScrollProgress] = useState(0); // Add scroll progress state
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [dashboardScrollProgress, setDashboardScrollProgress] = useState(0);
   const featuresRef = useRef(null);
-  const heroRef = useRef(null); // Add a ref for the hero section
+  const heroRef = useRef(null);
+  const dashboardRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -384,11 +432,10 @@ const ModernLandingPage = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
       
-      // Calculate scroll progress
+      // Calculate hero scroll progress
       if (heroRef.current) {
         const heroHeight = heroRef.current.offsetHeight;
         const scrollPosition = window.scrollY;
-        const viewportHeight = window.innerHeight;
         
         // Calculate scroll progress (0 to 1) based on how far down the hero section we've scrolled
         // Start transition after scrolling 30% of the hero section
@@ -401,6 +448,16 @@ const ModernLandingPage = () => {
         } else {
           setActiveSection('hero');
         }
+      }
+      
+      // Calculate dashboard section scroll progress
+      if (dashboardRef.current) {
+        const dashboardRect = dashboardRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Start showing dashboard section when it's 30% into the viewport
+        const dashProgress = Math.min(Math.max(1 - (dashboardRect.top - windowHeight * 0.3) / (windowHeight * 0.5), 0), 1);
+        setDashboardScrollProgress(dashProgress);
       }
     };
 
@@ -468,11 +525,11 @@ const ModernLandingPage = () => {
 
       {/* Hero Section */}
       <div 
-        ref={heroRef} // Add ref to hero section
+        ref={heroRef}
         className={`relative min-h-screen flex items-center justify-center overflow-hidden`}
         style={{
-          opacity: 1 - scrollProgress, // Fade out based on scroll progress
-          transform: `translateY(${scrollProgress * 20}vh)` // Move up slightly as user scrolls
+          opacity: 1 - scrollProgress,
+          transform: `translateY(${scrollProgress * 20}vh)`
         }}
       >
         {/* Background Image */}
@@ -550,6 +607,7 @@ const ModernLandingPage = () => {
                 />
               ))}
             </div>
+
             {/* Dynamic Slide Info */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -609,8 +667,8 @@ const ModernLandingPage = () => {
         ref={featuresRef}
         className={`py-24`}
         style={{
-          opacity: scrollProgress, // Fade in based on scroll progress
-          transform: `translateY(${(1 - scrollProgress) * 20}vh)` // Move up as it becomes visible
+          opacity: scrollProgress,
+          transform: `translateY(${(1 - scrollProgress) * 20}vh)`
         }}
       >
         <div className="max-w-6xl mx-auto px-6">
@@ -745,6 +803,134 @@ const ModernLandingPage = () => {
                 <p className="opacity-80">Swift implementation in any environment</p>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Command and Control Dashboard Section */}
+      <div 
+        id="dashboards" 
+        ref={dashboardRef}
+        className="py-24 bg-gradient-to-br from-gray-50 to-gray-100"
+        style={{
+          opacity: dashboardScrollProgress,
+          transform: `translateY(${(1 - dashboardScrollProgress) * 10}vh)`
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+            >
+              <h2 className="text-5xl font-bold text-gray-800 mb-4">Command and Control</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Multi-level monitoring and management systems that enable oversight from national to local levels
+              </p>
+            </motion.div>
+          </div>
+          
+          {/* Hierarchy Visualization */}
+          <div className="flex justify-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="relative"
+            >
+              <div className="flex justify-center items-center mb-4">
+                <div className="bg-blue-600 text-white p-4 rounded-xl shadow-lg w-64 text-center">
+                  <Layers size={32} className="mx-auto mb-2" />
+                  <h3 className="text-xl font-bold">National Administration</h3>
+                </div>
+              </div>
+              
+              <div className="h-16 w-1 bg-blue-400 mx-auto"></div>
+              
+              <div className="flex justify-center items-center mb-4">
+                <div className="bg-green-600 text-white p-4 rounded-xl shadow-lg w-64 text-center">
+                  <Globe size={32} className="mx-auto mb-2" />
+                  <h3 className="text-xl font-bold">State Oversight</h3>
+                </div>
+              </div>
+              
+              <div className="h-16 w-1 bg-green-400 mx-auto"></div>
+              
+              <div className="flex justify-center items-center">
+                <div className="bg-purple-600 text-white p-4 rounded-xl shadow-lg w-64 text-center">
+                  <Map size={32} className="mx-auto mb-2" />
+                  <h3 className="text-xl font-bold">District Management</h3>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+          
+          {/* Dashboard Cards */}
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <DashboardCard 
+              title="Admin Dashboard"
+              icon={<Monitor size={28} />}
+              color="blue"
+              image="/api/placeholder/600/400"
+              delay={0.3}
+              features={[
+                "Nationwide performance metrics",
+                "Resource allocation optimization",
+                "State-level comparison",
+                "Policy implementation tracking"
+              ]}
+            />
+            
+            <DashboardCard 
+              title="State Dashboard"
+              icon={<Globe size={28} />}
+              color="green"
+              image="/api/placeholder/600/400"
+              delay={0.4}
+              features={[
+                "District-level performance metrics",
+                "Resource management system",
+                "Local project implementation status",
+                "Community engagement tracking"
+              ]}
+            />
+            
+            <DashboardCard 
+              title="District Dashboard"
+              icon={<Map size={28} />}
+              color="purple"
+              image="/api/placeholder/600/400"
+              delay={0.5}
+              features={[
+                "Real-time cleanliness metrics",
+                "Field worker assignment system",
+                "Community feedback integration",
+                "Issue tracking and resolution"
+              ]}
+            />
+          </div>
+          
+          {/* Dashboard Access Button */}
+          <div className="flex justify-center">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              viewport={{ once: true }}
+              onClick={() => navigate('/login')}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-full 
+                        flex items-center space-x-3 font-semibold text-xl shadow-xl 
+                        hover:shadow-2xl transition-all"
+            >
+              <Monitor size={24} />
+              <span>Access Dashboard</span>
+              <ChevronRight size={24} />
+            </motion.button>
           </div>
         </div>
       </div>
