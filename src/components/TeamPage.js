@@ -1,5 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import hassu from '../images/hassu.jpg';
+import sallu from '../images/sallu.jpg';
+import duaa from '../images/duaa.jpg';
 
 // SVG Icons
 const GitHubIcon = () => (
@@ -84,7 +87,7 @@ const TeamPage = () => {
       role: "ML, Full Stack, Python",
       skills: ["Machine Learning", "Full Stack Development", "Python", "Data Analysis"],
       bio: "Passionate about machine learning and building end-to-end solutions with Python. Specializes in creating innovative applications that merge cutting-edge algorithms with user-friendly interfaces.",
-      image: "/api/placeholder/400/400",
+      image: hassu,
       social: {
         github: "https://github.com/harshgautam",
         linkedin: "https://linkedin.com/in/harshgautam",
@@ -98,7 +101,7 @@ const TeamPage = () => {
       role: "Full Stack Developer",
       skills: ["Frontend Development", "Backend Systems", "UI/UX Design", "Database Architecture"],
       bio: "Expert in crafting seamless user experiences with cutting-edge technologies. Specializes in both frontend and backend development with a focus on creating scalable, performant applications.",
-      image: "/api/placeholder/400/400",
+      image: sallu,
       social: {
         github: "https://github.com/salonibansal",
         linkedin: "https://linkedin.com/in/salonibansal",
@@ -112,7 +115,7 @@ const TeamPage = () => {
       role: "Presenter",
       skills: ["Public Speaking", "Client Relations", "Technical Communication", "Project Presentation"],
       bio: "Master communicator who brings ideas to life. Skilled at conveying complex concepts in accessible ways and representing the team with confidence and clarity at events and client meetings.",
-      image: "/api/placeholder/400/400",
+      image: duaa,
       social: {
         github: "https://github.com/duanshichawla",
         linkedin: "https://linkedin.com/in/duanshichawla",
