@@ -7,7 +7,7 @@ import { Moon, Sun, Camera } from 'lucide-react';
 import {
   Chart as ChartJS,
   CategoryScale,
-  LinearScale,
+  LinearScale, 
   PointElement,
   LineElement,
   Title,
