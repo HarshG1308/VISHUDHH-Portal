@@ -304,6 +304,9 @@ import {
 } from 'lucide-react';
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import img1 from '../images/Screenshot 2025-03-08 151342.png';
+import img2 from '../images/Screenshot 2025-03-08 151416.png';
+import img3 from '../images/Screenshot 2025-03-08 151443.png';
 
 const heroImages = [
   {
@@ -874,7 +877,7 @@ const ModernLandingPage = () => {
               title="Admin Dashboard"
               icon={<Monitor size={28} />}
               color="blue"
-              image="/api/placeholder/600/400"
+              image={img1}
               delay={0.3}
               features={[
                 "Nationwide performance metrics",
@@ -888,7 +891,7 @@ const ModernLandingPage = () => {
               title="State Dashboard"
               icon={<Globe size={28} />}
               color="green"
-              image="/api/placeholder/600/400"
+              image={img2}
               delay={0.4}
               features={[
                 "District-level performance metrics",
@@ -902,7 +905,7 @@ const ModernLandingPage = () => {
               title="District Dashboard"
               icon={<Map size={28} />}
               color="purple"
-              image="/api/placeholder/600/400"
+              image={img3}
               delay={0.5}
               features={[
                 "Real-time cleanliness metrics",
