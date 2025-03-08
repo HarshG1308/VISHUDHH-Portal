@@ -1419,7 +1419,4 @@ const ModernLandingPage = () => {
     </div>
   );
 };
-
-
-
 export default ModernLandingPage;

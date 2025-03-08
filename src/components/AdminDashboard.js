@@ -61,7 +61,7 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     localStorage.removeItem("userData");
     localStorage.removeItem("userRole");
-    navigate("/signup");
+    navigate("/");
   };
 
   const statsData = [
