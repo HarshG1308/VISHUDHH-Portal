@@ -285,29 +285,28 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import {
+  Activity,
+  Award,
+  BarChart2,
   CheckCircle,
   ChevronDown,
+  ChevronRight,
   Globe,
+  Layers,
   Leaf,
   LogIn,
+  Map,
+  Monitor,
   Shield,
   Star,
   UserPlus,
-  Award,
-  BarChart2,
-  Zap,
-  Monitor,
-  Layers,
-  Map,
-  ChevronRight,
-  Activity
+  Zap
 } from 'lucide-react';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import img1 from '../images/Screenshot 2025-03-08 151342.png';
-import img2 from '../images/Screenshot 2025-03-08 151416.png';
-import img3 from '../images/Screenshot 2025-03-08 151443.png';
-
+import admin from '../images/admin.jpg';
+import district from '../images/district.jpg';
+import state from '../images/state.jpg';
 const heroImages = [
   {
     src: 'https://orapiasia.com/wp-content/uploads/sustainable-cleaning-products.jpg',
@@ -877,7 +876,7 @@ const ModernLandingPage = () => {
               title="Admin Dashboard"
               icon={<Monitor size={28} />}
               color="blue"
-              image={img1}
+              image={admin}
               delay={0.3}
               features={[
                 "Nationwide performance metrics",
@@ -891,7 +890,7 @@ const ModernLandingPage = () => {
               title="State Dashboard"
               icon={<Globe size={28} />}
               color="green"
-              image={img2}
+              image={state}
               delay={0.4}
               features={[
                 "District-level performance metrics",
@@ -905,7 +904,7 @@ const ModernLandingPage = () => {
               title="District Dashboard"
               icon={<Map size={28} />}
               color="purple"
-              image={img3}
+              image={district}
               delay={0.5}
               features={[
                 "Real-time cleanliness metrics",
