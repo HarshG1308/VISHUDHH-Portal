@@ -121,6 +121,8 @@ const AdminDashboard = () => {
         </div>
       </div>
 
+      {/* content added */}
+
       {/* Main Content */}
       <div className="ml-64 transition-all duration-300">
         {/* Header */}
