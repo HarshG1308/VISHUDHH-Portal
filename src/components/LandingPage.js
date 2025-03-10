@@ -514,7 +514,7 @@ const ModernLandingPage = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => navigate('/login')}
-                className="bg-green-300 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-green-400"
+                className="bg-blue-500 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-green-400"
               >
                 <LogIn size={18} />
                 <span>Login</span>
@@ -523,7 +523,7 @@ const ModernLandingPage = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => navigate('/signup')}
-                className="bg-green-300 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-green-400"
+                className="bg-blue-500 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-green-400"
               >
                 <UserPlus size={18} />
                 <span>Sign Up</span>

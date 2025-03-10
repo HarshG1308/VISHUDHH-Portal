@@ -10,11 +10,56 @@ const AdminDashboard = () => {
     { name: "Maharashtra", districts: [{ name: "Mumbai", cameraIP: "192.168.1.1" }] },
     { name: "Bihar", districts: [{ name: "Patna", cameraIP: "192.168.1.2" }] },
   ]);
+  
+  // Predefined states with districts
+  const availableStates = [
+    { 
+      name: "Andhra Pradesh", 
+      districts: ["Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Kurnool"] 
+    },
+    { 
+      name: "Gujarat", 
+      districts: ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Gandhinagar"] 
+    },
+    { 
+      name: "Karnataka", 
+      districts: ["Bengaluru", "Mysuru", "Hubli", "Mangaluru", "Belagavi"] 
+    },
+    { 
+      name: "Kerala", 
+      districts: ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur", "Kollam"] 
+    },
+    { 
+      name: "Madhya Pradesh", 
+      districts: ["Bhopal", "Indore", "Jabalpur", "Gwalior", "Ujjain"] 
+    },
+    { 
+      name: "Punjab", 
+      districts: ["Amritsar", "Ludhiana", "Jalandhar", "Patiala", "Bathinda"] 
+    },
+    { 
+      name: "Rajasthan", 
+      districts: ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Ajmer"] 
+    },
+    { 
+      name: "Tamil Nadu", 
+      districts: ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem"] 
+    },
+    { 
+      name: "Uttar Pradesh", 
+      districts: ["Lucknow", "Kanpur", "Varanasi", "Agra", "Prayagraj"] 
+    },
+    { 
+      name: "West Bengal", 
+      districts: ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri"] 
+    }
+  ];
+  
   const [expandedState, setExpandedState] = useState(null);
   const [newDistrictName, setNewDistrictName] = useState("");
   const [newCameraIP, setNewCameraIP] = useState("");
-  const [newStateName, setNewStateName] = useState("");
-  const [newStateDistrictCount, setNewStateDistrictCount] = useState("");
+  const [selectedState, setSelectedState] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("dashboard");
 
   const toggleExpandedState = (stateIndex) => {
@@ -46,15 +91,32 @@ const AdminDashboard = () => {
   };
 
   const handleAddState = () => {
-    if (newStateName && newStateDistrictCount) {
-      const districtCount = parseInt(newStateDistrictCount, 10);
-      const newState = { name: newStateName, districts: [] };
-      for (let i = 0; i < districtCount; i++) {
-        newState.districts.push({ name: `District ${i + 1}`, cameraIP: "" });
+    if (selectedState) {
+      // Find the selected state in availableStates
+      const stateToAdd = availableStates.find(state => state.name === selectedState);
+      if (stateToAdd) {
+        // Check if state already exists
+        const stateExists = states.some(state => state.name === stateToAdd.name);
+        if (!stateExists) {
+          // Create districts with camera IPs
+          const districtsWithIPs = stateToAdd.districts.map((district, index) => ({
+            name: district,
+            cameraIP: `192.168.${states.length + 1}.${index + 1}`
+          }));
+          
+          // Add the new state with its districts
+          setStates([...states, { 
+            name: stateToAdd.name, 
+            districts: districtsWithIPs 
+          }]);
+          
+          // Reset selection
+          setSelectedState("");
+          setIsDropdownOpen(false);
+        } else {
+          alert("This state is already added to the dashboard.");
+        }
       }
-      setStates([...states, newState]);
-      setNewStateName("");
-      setNewStateDistrictCount("");
     }
   };
   
@@ -121,8 +183,6 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      {/* content added */}
-
       {/* Main Content */}
       <div className="ml-64 transition-all duration-300">
         {/* Header */}
@@ -180,30 +240,55 @@ const AdminDashboard = () => {
                       </div>
                     </div>
                     
-                    {/* Add New State Section */}
+                    {/* Add New State Section with Dropdown */}
                     <div className="p-6 border-b border-gray-100 bg-gray-50">
                       <h3 className="text-lg font-medium text-gray-800 mb-4">Add New State</h3>
                       <div className="flex flex-wrap md:flex-nowrap gap-4 items-center">
-                        <input
-                          type="text"
-                          value={newStateName}
-                          onChange={(e) => setNewStateName(e.target.value)}
-                          placeholder="Enter state name"
-                          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all"
-                        />
-                        <input
-                          type="number"
-                          value={newStateDistrictCount}
-                          onChange={(e) => setNewStateDistrictCount(e.target.value)}
-                          placeholder="Number of districts"
-                          className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all"
-                        />
+                        {/* Dropdown for selecting states */}
+                        <div className="relative flex-1">
+                          <button
+                            className="w-full flex justify-between items-center px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all bg-white"
+                            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                          >
+                            <span>{selectedState || "Select a state"}</span>
+                            <ChevronDown className={`w-4 h-4 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`} />
+                          </button>
+                          
+                          {/* Dropdown menu */}
+                          {isDropdownOpen && (
+                            <div className="absolute z-10 mt-1 w-full bg-white rounded-lg shadow-lg border border-gray-200 max-h-60 overflow-y-auto">
+                              {availableStates
+                                .filter(state => !states.some(s => s.name === state.name))
+                                .map((state, index) => (
+                                  <div
+                                    key={index}
+                                    className="p-3 hover:bg-emerald-50 cursor-pointer border-b border-gray-100 last:border-b-0"
+                                    onClick={() => {
+                                      setSelectedState(state.name);
+                                      setIsDropdownOpen(false);
+                                    }}
+                                  >
+                                    <div className="font-medium">{state.name}</div>
+                                    <div className="text-xs text-gray-500">
+                                      {state.districts.length} districts available
+                                    </div>
+                                  </div>
+                                ))}
+                            </div>
+                          )}
+                        </div>
+                        
                         <button
                           onClick={handleAddState}
-                          className="flex items-center justify-center space-x-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium transition-all"
+                          disabled={!selectedState}
+                          className={`flex items-center justify-center space-x-2 px-6 py-3 rounded-lg font-medium transition-all ${
+                            selectedState 
+                              ? "bg-emerald-600 hover:bg-emerald-700 text-white" 
+                              : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                          }`}
                         >
                           <Plus className="w-4 h-4" />
-                          <span>Add State</span>
+                          <span>Add State with Districts</span>
                         </button>
                       </div>
                     </div>
